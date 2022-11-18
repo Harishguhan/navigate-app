@@ -10,6 +10,8 @@ import NewScreen from "./screen/NewScreen";
 import CourseDetail from "./screen/CourseDetail";
 import { Provider } from "react-redux";
 import { Store } from "./Store/Store";
+
+import Dashboard from "./screen/Dashhboard";
 // import ContextProvider from "./Context/Context";
 const Stack = createNativeStackNavigator();
 
@@ -52,10 +54,7 @@ export default function App() {
             />
             <Stack.Screen
               name="dashboard"
-              component={CourseDetail}
-              options={{
-                title: "Course Detail",
-              }}
+              component={Dashboard}
             />
           </Stack.Navigator>
         </NavigationContainer>

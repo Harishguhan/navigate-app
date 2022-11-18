@@ -1,11 +1,11 @@
 import { StyleSheet, Text, View } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 
-export default function Input({label,textInputConfig,erors}){
+export default function Input({label,textInputConfig,erors,secureText}){
     return(
         <View style={styles.inputContainer}>
             <Text style={styles.label}>{label}</Text>
-            <TextInput style={styles.input} {...textInputConfig} />
+            <TextInput style={styles.input} {...textInputConfig} secureTextEntry={secureText}/>
             <Text style={{color:'red'}}>{erors}</Text>
         </View>
     );

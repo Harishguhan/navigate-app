@@ -1,8 +1,15 @@
 import { useState } from "react";
-import { Button, View, Text, StyleSheet } from "react-native";
+import {
+  Button,
+  View,
+  Text,
+  StyleSheet,
+  KeyboardAvoidingView,
+} from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
 import Input from "../components/Input";
 
-export default function SignupForm() {
+export default function SignupForm({ navigation }) {
   const [inputValues, setInputvalues] = useState({
     username: "",
     email: "",
@@ -34,64 +41,78 @@ export default function SignupForm() {
     }
   };
   const handleSubmit = () => {
+    const emailRegex = new RegExp(
+      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
     if (!inputValues.username) {
       setErrors({ ...erors, username: "username is required" });
     } else if (!inputValues.email) {
       setErrors({ ...erors, email: "Email is required" });
+    } else if (!inputValues.email.match(emailRegex)) {
+      setErrors({ ...erors, email: "Email is invalid" });
     } else if (!inputValues.password) {
       setErrors({ ...erors, password: "passsword is required" });
-    } else if (!inputValues.address) {
+    }else if(inputValues.password.length < 8){
+      setErrors({ ...erors, password: "passsword Must be 8 charecters" });
+    }
+     else if (!inputValues.address) {
       setErrors({ ...erors, address: "Address is required" });
     } else {
-      console.log("success");
+      console.log(inputValues);
+      navigation.navigate("dashboard");
     }
   };
 
   return (
     <View style={styles.formContainer}>
-      <Input
-        label="Username"
-        textInputConfig={{
-          placeholder: "Enter your name",
-          onChangeText: handleChange.bind(this, "username"),
-          value: inputValues.username,
-        }}
-        erors={erors.username}
-      />
-      <Input
-        label="Email"
-        textInputConfig={{
-          placeholder: "Enter your Email",
-          onChangeText: handleChange.bind(this, "email"),
-          value: inputValues.email,
-        }}
-        erors={erors.email}
-      />
-      <Input
-        label="Password"
-        textInputConfig={{
-          placeholder: "Enter your Password",
-          onChangeText: handleChange.bind(this, "password"),
-          value: inputValues.password,
-        }}
-        erors={erors.password}
-      />
-      <Input
-        label="Address"
-        textInputConfig={{
-          placeholder: "Enter your Address",
-          onChangeText: handleChange.bind(this, "address"),
-          value: inputValues.address,
-        }}
-        erors={erors.address}
-      />
-      <Button title="Submit" onPress={handleSubmit} />
+      <KeyboardAvoidingView>
+        <ScrollView>
+          <Input
+            label="Username"
+            textInputConfig={{
+              placeholder: "Enter your name",
+              onChangeText: handleChange.bind(this, "username"),
+              value: inputValues.username,
+            }}
+            erors={erors.username}
+          />
+          <Input
+            label="Email"
+            textInputConfig={{
+              placeholder: "Enter your Email",
+              onChangeText: handleChange.bind(this, "email"),
+              value: inputValues.email,
+            }}
+            erors={erors.email}
+          />
+          <Input
+            label="Password"
+            textInputConfig={{
+              placeholder: "Enter your Password",
+              onChangeText: handleChange.bind(this, "password"),
+              value: inputValues.password,
+            }}
+            erors={erors.password}
+            secureText={true}
+          />
+          <Input
+            label="Address"
+            textInputConfig={{
+              placeholder: "Enter your Address",
+              onChangeText: handleChange.bind(this, "address"),
+              value: inputValues.address,
+            }}
+            erors={erors.address}
+          />
+          <Button title="Submit" onPress={handleSubmit} />
+        </ScrollView>
+      </KeyboardAvoidingView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  formContainer:{
-    margin:10
-  }
+  formContainer: {
+    margin: 10,
+  },
 });
