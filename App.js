@@ -50,6 +50,13 @@ export default function App() {
                 title: "Course Detail",
               }}
             />
+            <Stack.Screen
+              name="dashboard"
+              component={CourseDetail}
+              options={{
+                title: "Course Detail",
+              }}
+            />
           </Stack.Navigator>
         </NavigationContainer>
        
