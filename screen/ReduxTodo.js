@@ -9,7 +9,7 @@ export default function ReduxTodo() {
     id:'',
     name:'',
   });
-  const value = useSelector((state)=> state.names);
+  const value = useSelector((state)=> state.names.todo);
 
   const dispatch = useDispatch();
 

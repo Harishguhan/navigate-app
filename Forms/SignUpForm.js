@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import Input from "../components/Input";
-import storeData from "../Util/http";
+import {storeData} from "../Util/http";
 
 export default function SignupForm({ navigation }) {
   const [inputValues, setInputvalues] = useState({
@@ -60,9 +60,8 @@ export default function SignupForm({ navigation }) {
       setErrors({ ...erors, address: "Address is required" });
     } else {
       storeData(inputValues);
-      // setInputvalues('');
+      setInputvalues('');
       navigation.navigate("dashboard");
-      
     }
   };
 

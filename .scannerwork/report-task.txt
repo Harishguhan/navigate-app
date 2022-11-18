@@ -1,0 +1,6 @@
+projectKey=navigate-app
+serverUrl=http://localhost:9000
+serverVersion=9.5.0.56709
+dashboardUrl=http://localhost:9000/dashboard?id=navigate-app
+ceTaskId=AYSKss6Id2POmhP7oglR
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYSKss6Id2POmhP7oglR

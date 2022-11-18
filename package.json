@@ -27,7 +27,8 @@
     "react-redux": "^8.0.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9"
+    "@babel/core": "^7.12.9",
+    "sonarqube-scanner": "^2.8.2"
   },
   "private": true
 }
