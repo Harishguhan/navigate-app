@@ -39,13 +39,13 @@ export default function Todo() {
     </View>
     <View>
     <View>
-        {values.map((data) => {
+        {/* {values.map((data) => {
             return(
                 <View style={styles.box}>
                     <Text>{data.name}</Text>
                 </View>
             );
-        })}
+        })} */}
     </View>
     </View>
     </>

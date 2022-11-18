@@ -8,6 +8,7 @@ import { AntDesign } from '@expo/vector-icons';
 import SignupForm from "../Forms/SignUpForm";
 import { FontAwesome } from '@expo/vector-icons'; 
 import ReduxTodo from "./ReduxTodo";
+import Dashboard from "./Dashhboard";
 
 function NewScreen() {
   const BottomTab = createBottomTabNavigator();
@@ -24,8 +25,8 @@ function NewScreen() {
         }}
       />
       <BottomTab.Screen
-        name="Logout"
-        component={Todo}
+        name="dashbord"
+        component={Dashboard}
         options={{
             headerShown:false,
             title:'Logout',

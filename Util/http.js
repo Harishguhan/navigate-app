@@ -8,7 +8,6 @@ export function storeData(data) {
 }
 
 export async function fetchData() {
-  console.log(responce);
   const responce = await axios.get(
     "https://react-native-01-9835f-default-rtdb.firebaseio.com/expences.json"
   );
@@ -25,4 +24,11 @@ export async function fetchData() {
     fetchdata.push(Data);
   }
   return fetchdata;
+}
+
+export function updateData(id, data) {
+  axios.put(
+    `https://react-native-01-9835f-default-rtdb.firebaseio.com/expences/${id}.json`,
+    data
+  );
 }
